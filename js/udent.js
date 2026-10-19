@@ -107,8 +107,13 @@
       updPause(); updFab();
     }, { threshold: [0, .2, .4] }).observe(hero);
   }
-  if (mqM.matches && slides.length > 1) {             // celular: arranca en Juan con un paciente y no pasa solo
+  if (mqM.matches && slides.length > 1) {             // celular: arranca en Juan con un paciente
     slides[0].classList.remove('is-on'); slides[1].classList.add('is-on'); cur = 1;
+    if (MOTION && slides.length > 2) {                // y las fotos van pasando solas, con un zoom lento (sin el video)
+      setInterval(() => {
+        if (heroVisible && docVisible) show(cur >= slides.length - 1 ? 1 : cur + 1);
+      }, CONFIG.slideT * 1000);
+    }
   }
   syncVideo();
 
