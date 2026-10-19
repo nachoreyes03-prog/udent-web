@@ -52,7 +52,7 @@
       es.forEach(en => (en.isIntersecting ? waVis.add(en.target) : waVis.delete(en.target)));
       updFab();
     }, { threshold: .5 });
-    $$('.trat [data-wa], .srv, .llegar [data-wa], .foot [data-wa]').forEach(el => wio.observe(el));
+    $$('.c-wa, .trat [data-wa], .srv, .llegar [data-wa], .foot [data-wa]').forEach(el => wio.observe(el));
   }
   mqM.addEventListener && mqM.addEventListener('change', updFab);
 
@@ -61,11 +61,7 @@
   const vid = $('.slide video.sv');
   let cur = 0, hovering = false, heroVisible = true, docVisible = true;
 
-  if (vid) {
-    const m = mqM.matches;
-    if (m && vid.dataset.mp) vid.poster = vid.dataset.mp;
-    vid.src = m ? vid.dataset.m : vid.dataset.d;
-  }
+  if (vid && !mqM.matches) vid.src = vid.dataset.d;     // en el celular no se carga el video: el hero es una foto quieta
   function syncVideo() {
     if (!vid) return;
     if (MOTION && cur === 0 && heroVisible && docVisible) { const p = vid.play(); if (p && p.catch) p.catch(() => {}); }
@@ -110,6 +106,9 @@
       inHero = en.intersectionRatio > .2;
       updPause(); updFab();
     }, { threshold: [0, .2, .4] }).observe(hero);
+  }
+  if (mqM.matches && slides.length > 1) {             // celular: arranca en Juan con un paciente y no pasa solo
+    slides[0].classList.remove('is-on'); slides[1].classList.add('is-on'); cur = 1;
   }
   syncVideo();
 
@@ -243,12 +242,14 @@
   const heroH = $('#heroH');
   if (heroH) gsap.from(splitWords(heroH), { yPercent: 115, duration: 1.1, ease: 'expo.out', stagger: .05, delay: .15 });
   gsap.from('.cell-l, .cell .ar', { opacity: 0, y: 14, duration: .8, ease: 'expo.out', stagger: .04, delay: .4 });
-  kenBurns(0);
+  kenBurns(cur);
 
   /* al bajar, la foto se funde a marrón sólido (como Ledup). Solo opacidad: no se toca el video. */
   const heroST = { trigger: '#inicio', start: () => 'top ' + topH(), end: () => 'bottom ' + topH(), scrub: true, invalidateOnRefresh: true };
-  gsap.to('#heroShade', { opacity: 1, ease: 'power1.in', scrollTrigger: heroST });
-  gsap.to('#heroGrid', { opacity: 0, ease: 'power2.in', scrollTrigger: heroST });
+  if (!mqM.matches) {                                  // en el celular el título y el botón no se desvanecen
+    gsap.to('#heroShade', { opacity: 1, ease: 'power1.in', scrollTrigger: heroST });
+    gsap.to('#heroGrid', { opacity: 0, ease: 'power2.in', scrollTrigger: heroST });
+  }
 
   /* títulos de sección */
   $$('.split').forEach(h => {
