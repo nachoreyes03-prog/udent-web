@@ -9,7 +9,7 @@
   'use strict';
 
   const CONFIG = {
-    whatsapp: '5491140523508',                      // +54 9 11 4052-3508 (el de la tarjeta)
+    whatsapp: '5491130491042',                      // +54 9 11 3049-1042 (corregido por Juan el 19/10)
     hola: 'Hola U.Dent! Quiero hacer una consulta.',
     porTratamiento: t => 'Hola U.Dent! Quiero consultar por ' + t + '.',
     slideT: 6.5                                     // segundos por foto en el hero
