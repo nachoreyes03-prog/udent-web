@@ -166,6 +166,9 @@ a.cell:focus-visible { outline-offset: -3px; }
 .cell .ar { width: 18px; height: 18px; margin-bottom: 2px; }
 .hero-h { font: 200 var(--fs-h1)/1.02 var(--disp); letter-spacing: -.035em; max-width: 9.6em; text-wrap: balance; margin-left: -.04em; }
 .hero-note, .photo-mark { display: none; }
+/* "Juan Ulfe y equipo", abajo del título (pedido de Juan) */
+.c-head { flex-direction: column; align-items: flex-start; justify-content: flex-end; gap: 16px; }
+.hero-team { font: 300 clamp(1.05rem, 1.3vw, 1.3rem)/1.3 var(--disp); letter-spacing: -.01em; color: rgba(236, 235, 226, .88); }
 /* la celda de la consulta: el acento, lo primero que se ve */
 .c-wa { background: var(--aqua); color: var(--crema); }
 a.c-wa:hover, a.c-wa:focus-visible { background: var(--aqua-d); }
@@ -334,6 +337,7 @@ a.c-wa:hover, a.c-wa:focus-visible { background: var(--aqua-d); }
   .hero-grid { position: relative; inset: auto; display: flex; flex-direction: column; padding: 30px var(--g) 40px; }
   .c-trat, .c-juan, .c-tec, .c-llegar, .gl, .sl-ctrl { display: none; }
   .c-head { display: block; padding: 0; }
+  .hero-team { margin-top: 14px; font-size: 1.15rem; }
   .slide[data-k="juan"] img { object-position: 34% 42%; }
   .hero-h { max-width: none; }
   /* el botón del hero, igual a los demás botones: texto y flecha (el isotipo va en la foto) */
