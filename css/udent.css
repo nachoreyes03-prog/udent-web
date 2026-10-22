@@ -290,7 +290,8 @@ a.c-wa:hover, a.c-wa:focus-visible { background: var(--aqua-d); }
 .trama img { position: absolute; left: -4%; bottom: -1px; width: 108%; max-width: none; height: auto; }
 .foot-top { display: flex; align-items: flex-end; justify-content: space-between; gap: 28px 40px; flex-wrap: wrap; padding-top: clamp(56px, 8vw, 120px); padding-bottom: clamp(40px, 5vw, 72px); }
 .foot-h { font: 200 clamp(3rem, 7.4vw, 6rem)/.95 var(--disp); letter-spacing: -.04em; margin-left: -.05em; }
-.foot-card { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.foot-card { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); }
+.foot-card dd { overflow-wrap: normal; }
 .foot-card div { padding: 16px 16px 18px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); min-width: 0; }
 .foot-card div + div { padding-left: 16px; border-left: 1px solid var(--line); }
 .foot-card dt { font-size: 13px; color: rgba(236, 235, 226, .62); }
